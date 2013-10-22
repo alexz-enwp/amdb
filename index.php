@@ -16,13 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-require_once('../template/template.php');
-templatetop( "Admins willing to make difficult blocks" );
-require_once('../common/GlobalFunctions.php');
-showNotices( 's1', 's1-replag' );
+//require_once('../template/template.php');
+//templatetop( "Admins willing to make difficult blocks" );
+require_once('/home/alexz/commonphp/GlobalFunctions.php');
 date_default_timezone_set('UTC');
-require( '../common/mysql.php' );
-$db = mysql_connect( 'sql-s1-rr', 'alexz', $pass );
+require( '/home/alexz/commonphp/mysql.php' );
+$db = mysql_connect( 'enwiki.labsdb', $my_user, $my_pass );
 mysql_select_db( 'enwiki_p', $db );
 $res = mysql_query("(SELECT user_name, 
 (SELECT MAX(rc_timestamp) FROM recentchanges WHERE rc_user_text=user_name) AS ts,
@@ -87,4 +86,4 @@ while ( $row = mysql_fetch_assoc($res) ) {
 	echo "<tr$style><td>$userlink</td><td>$diffstring</td><td>$groups</td></tr>\n";	
 }
 echo "</table>";
-templatebottom();
+//templatebottom();
