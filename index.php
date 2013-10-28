@@ -17,11 +17,11 @@
 
 */
 $PROJECT = 'amdb';
-require_once('../template/template.php');
+require_once('/commonphp/template.php');
 templatetop( "Admins willing to make difficult blocks" );
-require_once('/home/alexz/commonphp/GlobalFunctions.php');
+require_once('/commonphp/GlobalFunctions.php');
 date_default_timezone_set('UTC');
-require( '/home/alexz/commonphp/mysql.php' );
+require( '/commonphp/mysql.php' );
 $db = mysql_connect( 'enwiki.labsdb', $my_user, $my_pass );
 mysql_select_db( 'enwiki_p', $db );
 $res = mysql_query("(SELECT user_name, 
