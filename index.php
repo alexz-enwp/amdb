@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 /*
 	Copyright 2013 Alex Z. (mrzmanwiki@gmail.com)
 
@@ -17,11 +19,11 @@
 
 */
 $PROJECT = 'amdb';
-require_once('/commonphp/template.php');
+require_once('commonphp/template.php');
 templatetop( "Admins willing to make difficult blocks" );
-require_once('/commonphp/GlobalFunctions.php');
+require_once('commonphp/GlobalFunctions.php');
 date_default_timezone_set('UTC');
-require( '/commonphp/mysql.php' );
+require( 'commonphp/mysql.php' );
 $db = mysql_connect( 'enwiki.labsdb', $my_user, $my_pass );
 mysql_select_db( 'enwiki_p', $db );
 $res = mysql_query("(SELECT user_name, 
