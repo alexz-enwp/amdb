@@ -24,13 +24,13 @@ require( '/home/alexz/commonphp/mysql.php' );
 $db = mysql_connect( 'enwiki.labsdb', $my_user, $my_pass );
 mysql_select_db( 'enwiki_p', $db );
 $res = mysql_query("(SELECT user_name, 
-(SELECT MAX(rc_timestamp) FROM recentchanges WHERE rc_user_text=user_name) AS ts,
+(SELECT MAX(rc_timestamp) FROM recentchanges_userindex WHERE rc_user_text=user_name) AS ts,
 (SELECT GROUP_CONCAT(ug_group SEPARATOR ', ') FROM user_groups WHERE ug_user=user_id) AS groups
 FROM pagelinks JOIN user ON user_name=REPLACE(SUBSTRING_INDEX(pl_title, '/', 1), '_', ' ') JOIN user_groups ON ug_user=user_id 
 WHERE ug_group='sysop' AND pl_namespace IN (2,3) AND pl_from=4679843) 
 UNION 
 (SELECT user_name, 
-(SELECT MAX(rc_timestamp) FROM recentchanges WHERE rc_user_text=user_name) AS ts,
+(SELECT MAX(rc_timestamp) FROM recentchanges_userindex WHERE rc_user_text=user_name) AS ts,
 (SELECT GROUP_CONCAT(ug_group SEPARATOR ', ') FROM user_groups WHERE ug_user=user_id) AS groups
 FROM page JOIN categorylinks ON cl_from=page_id JOIN user ON user_name=REPLACE(SUBSTRING_INDEX(page_title, '/', 1), '_', ' ') JOIN user_groups ON ug_user=user_id 
 WHERE ug_group='sysop' AND cl_to='Wikipedia_administrators_willing_to_make_difficult_blocks' AND page_namespace IN (2,3)) 
