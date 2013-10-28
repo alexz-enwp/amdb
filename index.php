@@ -16,8 +16,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-//require_once('../template/template.php');
-//templatetop( "Admins willing to make difficult blocks" );
+$PROJECT = 'amdb';
+require_once('../template/template.php');
+templatetop( "Admins willing to make difficult blocks" );
 require_once('/home/alexz/commonphp/GlobalFunctions.php');
 date_default_timezone_set('UTC');
 require( '/home/alexz/commonphp/mysql.php' );
