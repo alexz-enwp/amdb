@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 /*
-	Copyright 2013 Alex Z. (mrzmanwiki@gmail.com)
+	Copyright 2013 Alex Zaddach (mrzmanwiki@gmail.com)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
