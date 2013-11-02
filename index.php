@@ -43,12 +43,12 @@ $now = new DateTime;
 		?>
 		<p>This page shows a list of admins willing to make difficult blocks, ordered by the time of their last action.</p>
 		<p>The list comes from 
-<a href='http://en.wikipedia.org/wiki/Wikipedia:Admins_willing_to_make_difficult_blocks' title="Wikipedia:Admins willing to make difficult blocks">Wikipedia:Admins willing to make difficult blocks</a>
-and the associated <a href='http://en.wikipedia.org/wiki/Category:Wikipedia_administrators_willing_to_make_difficult_blocks' title='Category:Wikipedia administrators willing to make difficult blocks'>category</a>.</p>
+<a href='https://en.wikipedia.org/wiki/Wikipedia:Admins_willing_to_make_difficult_blocks' title="Wikipedia:Admins willing to make difficult blocks">Wikipedia:Admins willing to make difficult blocks</a>
+and the associated <a href='https://en.wikipedia.org/wiki/Category:Wikipedia_administrators_willing_to_make_difficult_blocks' title='Category:Wikipedia administrators willing to make difficult blocks'>category</a>.</p>
 		<p>The "last action" time is the time since their last action logged in recent changes. This page was loaded at <?php
 echo $now->format( 'G:i:s, j F Y' );
 		?> (UTC).</p>
-		<table style="width:60%">
+		<table style="width:85%">
 		<tr><th style="width:33%">Admin</th><th style="width:33%">Last action</th><th style="width:34%">User groups</th></tr>
 <?php
 function dsAppend( &$diffstring, $time, $interval ) {
@@ -67,10 +67,10 @@ while ( $row = mysql_fetch_assoc($res) ) {
 	$index++;
 	$encuser = wfUrlencode( $row['user_name'] );
 	$htmluser = htmlspecialchars( $row['user_name'], ENT_QUOTES );
-	$userpage = "<a href='http://en.wikipedia.org/wiki/User:$encuser' title='$htmluser'>$htmluser</a>";
-	$talk = "<a href='http://en.wikipedia.org/wiki/User_talk:$encuser' title='Talk'>talk</a>";
-	$contribs = "<a href='http://en.wikipedia.org/wiki/Special:Contributions/$encuser' title='Contribs'>contribs</a>";
-	$email = "<a href='http://en.wikipedia.org/wiki/Special:Emailuser/$encuser' title='Email'>email</a>";
+	$userpage = "<a href='https://en.wikipedia.org/wiki/User:$encuser' title='$htmluser'>$htmluser</a>";
+	$talk = "<a href='https://en.wikipedia.org/wiki/User_talk:$encuser' title='Talk'>talk</a>";
+	$contribs = "<a href='https://en.wikipedia.org/wiki/Special:Contributions/$encuser' title='Contribs'>contribs</a>";
+	$email = "<a href='https://en.wikipedia.org/wiki/Special:Emailuser/$encuser' title='Email'>email</a>";
 	$userlink = "$userpage ($talk | $contribs | $email)";
 	$then = date_create( $row['ts'] );
 	$groups = htmlspecialchars( $row['groups'], ENT_QUOTES );
@@ -84,9 +84,10 @@ while ( $row = mysql_fetch_assoc($res) ) {
 	$diffstring ? $diffstring .= ' ago': null;
 	$style = '';
 	if ( $index%2 == 1 ) {
-		$style = ' style="background-color: #E8E8ED;"';
+		$style = ' style="background-color: #F5F5F5"';
 	}
-	echo "<tr$style><td>$userlink</td><td>$diffstring</td><td>$groups</td></tr>\n";	
+	//echo "<tr$style><td>$userlink</td><td>$diffstring</td><td>$groups</td></tr>\n";	
+	echo "<tr><td$style>$userlink</td><td$style>$diffstring</td><td$style>$groups</td></tr>\n";
 }
 echo "</table>";
-//templatebottom();
+templatebottom();
